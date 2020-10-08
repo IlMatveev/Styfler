@@ -90,12 +90,6 @@ public extension Style {
             stylable[keyPath: target] = stylable[keyPath: source]
         }
     }
-
-    static func set<V>(_ target: ReferenceWritableKeyPath<Stylable, V?>, copying source: KeyPath<Stylable, V>) -> Style {
-        return .init { stylable, theme, options in
-            stylable[keyPath: target] = stylable[keyPath: source]
-        }
-    }
 }
 
 public extension Style {
