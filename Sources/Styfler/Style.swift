@@ -85,9 +85,9 @@ public extension Style {
 }
 
 public extension Style {
-    static func set<V>(_ target: ReferenceWritableKeyPath<Stylable, V>, copying source: KeyPath<Stylable, V>) -> Style {
+    static func set<V>(_ target: ReferenceWritableKeyPath<Stylable, V>, copying source: @escaping (Stylable) -> V) -> Style {
         return .init { stylable, theme, options in
-            stylable[keyPath: target] = stylable[keyPath: source]
+            stylable[keyPath: target] = source(stylable)
         }
     }
 }
